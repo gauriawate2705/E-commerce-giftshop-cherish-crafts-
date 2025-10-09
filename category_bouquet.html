@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bouquet Options - CherishCrafts</title>
+  <style>
+    body{font-family:Arial, sans-serif;background:#f7f0ea;color:#333;margin:0}
+    header{background:#ff4d7a;color:white;padding:12px;text-align:center}
+    .options-grid{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:20px}
+    .option-card{width:280px;background:white;border-radius:12px;padding:16px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.08)}
+    .option-card img{width:180px;height:150px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+    .btn{display:inline-block;background:#de6189;color:white;padding:8px 16px;border:none;border-radius:8px;cursor:pointer;margin-top:10px}
+    .btn:hover{background:#ff4476}
+    textarea, select, input[type="date"]{width:100%;padding:6px;margin-top:6px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box}
+    .back-home{background:#ff4476;color:white;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:16px}
+    .back-home:hover{background:#de6189}
+    footer{text-align:center;margin:20px;display:flex;justify-content:center}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bouquet Options</h1>
+  </header>
+
+  <section>
+    <h2 style="text-align:center;color:#fd84a2;">Choose Your Bouquet</h2>
+
+    <div class="options-grid">
+      <!-- Round Bouquet -->
+      <div class="option-card" data-name="Round Bouquet" data-base-price="799">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ8eSajCVVXKN8bGOUSSDncskYTf0MRcKm4g&s" alt="Round Bouquet">
+        <h3>Round Bouquet</h3>
+        <p class="price">Price: ₹799</p>
+
+        <label>Flowers:</label>
+        <select class="flowers">
+          <option>Rose</option><option>Orchid</option><option>Sunflower</option>
+          <option>Lavender</option><option>White Roses + Leaves</option>
+          <option>LO Rose + Gypso</option><option>Orchid + Leaves</option>
+          <option>Red Roses + White Lilies</option>
+        </select>
+
+        <label>Chocolate:</label>
+        <select class="chocolate">
+          <option>No Chocolate</option><option>Milk Chocolate</option>
+          <option>Dark Chocolate</option><option>Mixed Truffle</option>
+          <option>Tradio 10</option>
+        </select>
+
+        <label>Quantity:</label>
+        <select class="quantity">
+          <option>12 Flowers</option>
+          <option>24 Flowers</option>
+          <option>Combo</option>
+        </select>
+
+        <label>Bloom Date:</label>
+        <input type="date" class="bloom-date">
+
+        <label>Other Requests:</label>
+        <textarea class="other" placeholder="Any special customization..."></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+
+      <!-- Polaroid Bouquet -->
+      <div class="option-card" data-name="Polaroid Bouquet" data-base-price="999">
+        <img src="data:image/jpeg;base64,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" alt="Polaroid Bouquet">
+        <h3>Polaroid Bouquet</h3>
+        <p class="price">Price: ₹999</p>
+
+        <label>Flowers:</label>
+        <select class="flowers">
+          <option>Rose</option><option>Orchid</option><option>Sunflower</option>
+          <option>Lavender</option><option>White Roses + Leaves</option>
+          <option>LO Rose + Gypso</option><option>Orchid + Leaves</option>
+          <option>Red Roses + White Lilies</option>
+        </select>
+
+        <label>Chocolate:</label>
+        <select class="chocolate">
+          <option>No Chocolate</option><option>Milk Chocolate</option>
+          <option>Dark Chocolate</option><option>Mixed Truffle</option>
+          <option>Tradio 10</option>
+        </select>
+
+        <label>Quantity:</label>
+        <select class="quantity">
+          <option>12 Flowers</option>
+          <option>24 Flowers</option>
+          <option>Combo</option>
+        </select>
+
+        <label>Bloom Date:</label>
+        <input type="date" class="bloom-date">
+
+        <label>Other Requests:</label>
+        <textarea class="other" placeholder="Any special customization..."></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+
+      <!-- Personalized Bouquet -->
+      <div class="option-card" data-name="Personalized Bouquet" data-base-price="1299">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKbevtzEy_N-W4ksTHIBmkz6ua0uT4VKnDOw&s" alt="Personalized Bouquet">
+        <h3>Personalized Bouquet</h3>
+        <p class="price">Price: ₹1299</p>
+
+        <label>Flowers:</label>
+        <select class="flowers">
+          <option>Rose</option><option>Orchid</option><option>Sunflower</option>
+          <option>Lavender</option><option>White Roses + Leaves</option>
+          <option>LO Rose + Gypso</option><option>Orchid + Leaves</option>
+          <option>Red Roses + White Lilies</option>
+        </select>
+
+        <label>Chocolate:</label>
+        <select class="chocolate">
+          <option>No Chocolate</option><option>Milk Chocolate</option>
+          <option>Dark Chocolate</option><option>Mixed Truffle</option>
+          <option>Tradio 10</option>
+        </select>
+
+        <label>Quantity:</label>
+        <select class="quantity">
+          <option>12 Flowers</option>
+          <option>24 Flowers</option>
+          <option>Combo</option>
+        </select>
+
+        <label>Bloom Date:</label>
+        <input type="date" class="bloom-date">
+
+        <label>Other Requests:</label>
+        <textarea class="other" placeholder="Any special customization..."></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <button onclick="window.location.href='index.html'" class="back-home">Back to Home</button>
+  </footer>
+
+  <script>
+    // Price add-ons
+    const flowerPrices = {"Rose":0,"Orchid":100,"Sunflower":50,"Lavender":120,"White Roses + Leaves":150,"LO Rose + Gypso":180,"Orchid + Leaves":200,"Red Roses + White Lilies":250};
+    const chocolatePrices = {"No Chocolate":0,"Milk Chocolate":150,"Dark Chocolate":180,"Mixed Truffle":220,"Tradio 10":300};
+    const quantityMultiplier = {"12 Flowers":1,"24 Flowers":2,"Combo":2.5};
+
+    document.querySelectorAll(".option-card").forEach(card=>{
+      const basePrice=parseInt(card.dataset.basePrice);
+      const priceElement=card.querySelector(".price");
+      const flowersSel=card.querySelector(".flowers");
+      const chocSel=card.querySelector(".chocolate");
+      const qtySel=card.querySelector(".quantity");
+      const dateInput=card.querySelector(".bloom-date");
+      const otherInput=card.querySelector(".other");
+      const addBtn=card.querySelector(".add-btn");
+
+      function updatePrice(){
+        let total=basePrice;
+        total+=flowerPrices[flowersSel.value]||0;
+        total+=chocolatePrices[chocSel.value]||0;
+        total*=quantityMultiplier[qtySel.value]||1;
+        priceElement.textContent=`Price: ₹${total}`;
+        return total;
+      }
+
+      [flowersSel,chocSel,qtySel].forEach(sel=> sel.addEventListener("change", updatePrice));
+      updatePrice();
+
+      addBtn.addEventListener("click",()=>{
+        const product=card.dataset.name;
+        const price=updatePrice();
+        const flowers=flowersSel.value;
+        const chocolate=chocSel.value;
+        const quantity=qtySel.value;
+        const date=dateInput.value||"Not specified";
+        const custom=otherInput.value||"No customization";
+
+        const url=`contact us.html?product=${encodeURIComponent(product)}&price=${encodeURIComponent("₹"+price)}&flowers=${encodeURIComponent(flowers)}&chocolate=${encodeURIComponent(chocolate)}&quantity=${encodeURIComponent(quantity)}&date=${encodeURIComponent(date)}&custom=${encodeURIComponent(custom)}`;
+        window.location.href=url;
+      });
+    });
+  </script>
+  
+</body>
+</html>

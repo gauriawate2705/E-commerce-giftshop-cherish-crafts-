@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resin Art Collection - CherishCrafts</title>
+  <link rel="stylesheet" href="resin.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f0ea;
+      color: #333;
+      margin: 0;
+    }
+
+    header {
+      background:#ff4d7a;
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .options-grid {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .option-card {
+      width: 260px;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .option-card img {
+      width: 180px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #de6189;
+      color: rgb(254, 253, 254);
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    textarea, select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .back-home {
+      background: #ff4476;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .back-home:hover {
+      background: #de6189;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px;
+      color: #f04671;
+      display: flex;
+      justify-content: center;
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Resin Art Collection</h1>
+  </header>
+
+  <section>
+    <h2 style="text-align:center;">Choose Your Resin Art Product</h2>
+
+    <div class="options-grid">
+      <!-- Resin Art Keychain -->
+      <div class="option-card" data-name="Resin Keychain" data-price="299">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhU6qrdQU8leUsH4LdFOruHbcBTFcilBDvLPHvqJoo_s-fG2OzkAo_RJBmkbc7qAK29sM&usqp=CAU" alt="Resin Keychain">
+        <h3>Resin Keychain</h3>
+        <p>Price: ₹<span class="price">350</span></p>
+
+        <label>Choose Type:</label>
+        <select class="quantity">
+          <option value="1">Single Keychain</option>
+          <option value="2">Pair (2 pcs)</option>
+          <option value="Combo">Set of 4</option>
+        </select>
+
+        <label>Your Customization:</label>
+        <textarea class="suggestion" placeholder="Add name or initials..." rows="2"></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+
+      <!-- Wedding Tray -->
+      <div class="option-card" data-name="Wedding Tray" data-price="1599">
+        <img src="https://i.pinimg.com/736x/f4/e9/92/f4e99218b8f44ac12c589901a027c9f0.jpg" alt="Wedding Tray">
+        <h3>Wedding Tray</h3>
+        <p>Price: ₹<span class="price">1599</span></p>
+
+        <label>Choose Type:</label>
+        <select class="quantity">
+          <option value="1">Small Tray</option>
+          <option value="2">Medium Tray</option>
+          <option value="Combo">Luxury Combo (2 Trays)</option>
+        </select>
+
+        <label>Your Customization:</label>
+        <textarea class="suggestion" placeholder="Add couple name/date..." rows="2"></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+
+      <!-- Resin Clock -->
+      <div class="option-card" data-name="Resin Clock" data-price="2499">
+        <img src="https://www.mondoluce.it/49477-large_default/modern-luxury-wall-clock-in-resin-atd-014.jpg" alt="Resin Clock">
+        <h3>Resin Clock</h3>
+        <p>Price: ₹<span class="price">2499
+        </span></p>
+
+        <label>Choose Type:</label>
+        <select class="quantity">
+          <option value="1">Wall Clock</option>
+          <option value="2">Table Clock</option>
+          <option value="Combo">Premium Clock Set</option>
+        </select>
+
+        <label>Your Customization:</label>
+        <textarea class="suggestion" placeholder="Add theme or color preference..." rows="2"></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <button onclick="window.location.href='index.html'" class="back-home">
+      Back to Home
+    </button>
+  </footer>
+
+  <!-- JavaScript for Auto Price Update -->
+ <script>
+  // Update prices dynamically
+  document.querySelectorAll('.option-card').forEach(card => {
+    const priceElement = card.querySelector('.price');
+    const select = card.querySelector('.quantity');
+    const basePrice = parseInt(card.getAttribute('data-price'));
+
+    select.addEventListener('change', () => {
+      let finalPrice = basePrice;
+
+      switch (select.value) {
+        case '2':
+          finalPrice = basePrice * 2;
+          break;
+        case 'Combo':
+          finalPrice = Math.round(basePrice * 2.3);
+          break;
+        default:
+          finalPrice = basePrice;
+      }
+      priceElement.textContent = finalPrice;
+    });
+  });
+
+  // Add to Cart (Direct Order Flow)
+  document.querySelectorAll(".add-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".option-card");
+      const productName = card.getAttribute("data-name");
+      const price = card.querySelector(".price").textContent;
+      const custom = card.querySelector(".suggestion").value || "No customization";
+    const image = card.querySelector("img").src;
+      // Redirect to contact form with details
+       window.location.href = `contact us.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(price)}&custom=${encodeURIComponent(custom)}&image=${encodeURIComponent(image)}`;
+  });
+  });
+</script>
+
+</body>
+</html>

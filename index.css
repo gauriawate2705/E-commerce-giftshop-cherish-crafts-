@@ -1,0 +1,147 @@
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+}
+/* === Header === */
+header { 
+  background: #fd84a2;
+  color: #fff;
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: #ffe3ef;
+}
+/* === Hero Section === */
+.hero {
+    position: relative;
+  background: url("https://img.freepik.com/free-photo/tiny-valentine-s-day-present-with-ribbon_23-2148015435.jpg?semt=ais_hybrid&w=740&q=80") no-repeat center center/cover;
+  background-size:cover;
+  height:100vh;   
+  /* you can increase if you want */
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  text-align: center;
+  padding: 20px;
+  background-color: #fd84a2;
+}
+.hero-image img{
+  max-width: 350px;
+  height: auto;
+}
+.hero h1 {
+  font-size: 36px;
+  margin: 0;
+  color: #000;
+}
+.hero p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #020101;
+  font-weight: bold;
+}
+.hero button {
+  background: #ff4d7a;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.hero button:hover {
+  background: #e73d69;
+}
+/* === Categories Section === */
+.categories {
+  text-align: center;
+  padding: 30px 0;
+  width: 100%;
+  max-width: 100%;
+  margin: o auto;
+  gap: 30px;
+  justify-content: space-between;
+}
+.categories h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #000;
+}
+.category-grid {
+  display: flex;
+  grid-template-columns: repeat(4,1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.category {
+  text-align: center;
+}
+.category img {
+  width: 100px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.category img:hover {
+  transform: scale(1.05);
+}
+.category p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #000;
+}
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+@media(max-width:600px){
+  .category-grid{
+    grid-template-columns: 1fr;
+  }
+}
+nav {
+    margin-top: 10px;
+  }
+.hero h1 {
+    font-size: 28px;
+  }
+.category-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+.category img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }

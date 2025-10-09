@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta charset="utf-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hamper Options - CherishCrafts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f0ea;
+      color: #333;
+      margin: 0;
+    }
+
+    header {
+      background:#ff4d7a;
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .options-grid {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .option-card {
+      width: 260px;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .option-card img {
+      width: 180px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #de6189;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    textarea, select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .back-home {
+      background: #ff4476;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .back-home:hover {
+      background: #de6189;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px;
+      color: #f04671;
+      display: flex;
+      justify-content: center;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hamper Options</h1>
+  </header>
+
+  <section>
+    <h2 style="text-align:center;">Choose Your Hamper</h2>
+
+    <div class="options-grid">
+      <!-- Birthday Hamper -->
+      <div class="option-card" data-name="Birthday Hamper" data-price="699">
+        <img src="https://m.media-amazon.com/images/I/710sc6YK79L._UF1000,1000_QL80_.jpg" alt="Birthday Hamper">
+        <h3>Birthday Hamper</h3>
+        <p>Price: ₹<span class="price">699</span></p>
+
+        <label>Choose Quantity:</label>
+        <select class="quantity">
+          <option value="1">1 Hamper</option>
+          <option value="2">2 Hampers</option>
+          <option value="Combo">Combo Pack</option>
+        </select>
+
+        <label>Your Message</label>
+        <textarea class="suggestion" placeholder="Write your birthday wishes here..." rows="2"></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+
+      <!-- Baby Hamper -->
+      <div class="option-card" data-name="Baby Hamper" data-price="899">
+        <img src="https://m.media-amazon.com/images/I/8110wSWcyIL._UF350,350_QL80_.jpg" alt="Baby Hamper">
+        <h3>Baby Hamper</h3>
+        <p>Price: ₹<span class="price">899</span></p>
+
+        <label>Choose Quantity:</label>
+        <select class="quantity">
+          <option value="1">1 Hamper</option>
+          <option value="2">2 Hampers</option>
+          <option value="Combo">Combo Pack</option>
+        </select>
+
+        <label>Bloom Your Way</label>
+        <textarea class="suggestion" placeholder="Add your customization or message..." rows="2"></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+
+      <!-- Personalized Hamper -->
+      <div class="option-card" data-name="Personalized Hamper" data-price="599">
+        <img src="https://m.media-amazon.com/images/I/71F9-wuCFGL._UF1000,1000_QL80_.jpg" alt="Personalized Hamper">
+        <h3>Personalized Hamper</h3>
+        <p>Price: ₹<span class="price">599</span></p>
+
+        <label>Choose Quantity:</label>
+        <select class="quantity">
+          <option value="1">1 Hamper</option>
+          <option value="2">2 Hampers</option>
+          <option value="Combo">Combo Pack</option>
+        </select>
+
+        <label>Bloom Your Way:</label>
+        <textarea class="suggestion" placeholder="Write the name here..." rows="2"></textarea>
+
+        <button class="btn add-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <button onclick="window.location.href='index.html'" class="back-home">
+      Back to Home
+    </button>
+  </footer>
+
+  <!-- JavaScript for Auto Price Update & Add to Cart -->
+  <script>
+    document.querySelectorAll('.option-card').forEach(card => {
+      const priceElement = card.querySelector('.price');
+      const select = card.querySelector('.quantity');
+      const basePrice = parseInt(card.getAttribute('data-price'));
+
+      // Update price dynamically
+      select.addEventListener('change', () => {
+        let finalPrice = basePrice;
+        switch (select.value) {
+          case '2':
+            finalPrice = basePrice * 2;
+            break;
+          case 'Combo':
+            finalPrice = Math.round(basePrice * 2.3);
+            break;
+          default:
+            finalPrice = basePrice;
+        }
+        priceElement.textContent = finalPrice;
+      });
+
+      // Add to Cart → redirect to contact.html with details
+      const addBtn = card.querySelector('.add-btn');
+      const suggestionInput = card.querySelector('.suggestion');
+
+      addBtn.addEventListener('click', () => {
+        const productName = card.getAttribute('data-name');
+        const selectedQuantity = select ? select.value : '';
+        const customText = suggestionInput ? suggestionInput.value : '';
+        const finalPrice = priceElement.textContent;
+
+        const url = `contact us.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(finalPrice)}&quantity=${encodeURIComponent(selectedQuantity)}&custom=${encodeURIComponent(customText)}`;
+        window.location.href = url;
+      });
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback | CherishCrafts</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f5f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .feedback-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .feedback-container h2 {
+      text-align: center;
+      color: #ff4d7a;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #ff4d7a;
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color:#ff3464;
+    }
+
+    .confirmation {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+      color: green;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="feedback-container">
+    <h2>We’d Love Your Feedback!🎀</h2>
+    <form id="feedbackForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="rating">Rating</label>
+      <select id="rating" name="rating" required>
+        <option value="">-- Select Rating --</option>
+        <option value="5">5 - Amazing!</option>
+        <option value="4">4 - Great</option>
+        <option value="3">3 - Good</option>
+        <option value="2">2 - Fair</option>
+        <option value="1">1 - Poor</option>
+      </select>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" placeholder="Share your thoughts..." required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+      <div class="confirmation" id="confirmation">Thank you for your feedback! 💖</div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('feedbackForm');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const rating = form.rating.value;
+      const message = form.message.value.trim();
+
+      if (!name || !email || !rating || !message) {
+        alert('Please fill out all fields.');
+        return;
+      }
+
+      // Save feedback to localStorage
+      const feedback = { name, email, rating, message };
+      localStorage.setItem('latestFeedback', JSON.stringify(feedback));
+
+      // Redirect to about us page
+      window.location.href = 'aboutus.html';
+    });
+  </script>
+
+</body>
+</html>
